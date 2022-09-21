@@ -1,0 +1,83 @@
+
+body{
+    background-image: url("bg.jpeg");
+    background-position: center;
+    background-attachment: fixed;
+    
+}
+
+.header{
+    text-align: center;
+    margin: 2rem;
+}
+
+h1{
+    color: white;
+    font-family: "Bowlby One";
+    font-size: 3rem;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 500;
+}
+
+.header button{
+    border: none;
+    transition: 1s;
+    background-color: Transparent;
+    font-family: "Bowlby One";
+    font-size: 1.5rem;
+    color: green;
+    width: 150px;
+}
+
+.header button:hover{
+    font-size: 1.7rem;
+}
+
+
+.game-control{
+    text-align: center;
+}
+
+.emoji{
+    font-size: 2rem;
+    border: 1px solid black;
+}
+
+.timer {
+    margin: 1rem auto;
+    border: 3px solid red;
+    font-size: 3rem;
+    background-color: black;
+    color: red;
+    padding: 4px 10px;
+    max-width: max-content;
+}
+
+.table {
+    margin: 50px auto;
+}
+
+.game-board td {
+    height: 50px;
+    text-align: center;
+    font-size: 2.4em;
+    border: 2px solid black;
+}
+
+.cell {
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    background-color: lightslategrey;
+}
+
+
+.shown{
+    background-color: white;
+    color: green;
+}
+
+.mark{
+    background-color: aqua;
+}

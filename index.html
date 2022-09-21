@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Bowlby+One" />
+    <title>Mine Sweeper - Bar Zaken</title>
+</head>
+
+<body onload="init()">
+
+    <div class="header">
+        <h1>Mine Sweeper</h1>
+        <button onclick="setLevel(0)">Easy</button>
+        <button onclick="setLevel(1)"">Medium</button>
+        <button onclick="setLevel(2)">Hard</button>
+    </div>
+    <div class="game-control">
+        <button class="emoji" onclick="init()">😀</button>
+        <div class="timer">000</div>
+    </div>
+    <table class="table">
+        <tbody class="game-board"></tbody>
+    </table>
+
+    <script src="js/main.js"></script>
+    <script src="js/utils.js"></script>
+</body>
+
+</html>
