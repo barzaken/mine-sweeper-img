@@ -2,10 +2,7 @@
 
 console.log("connected")
 
-function getElCell(i, j) {
-    var elCell = document.getElementById(`cell-${i}-${j}`)
-    return elCell
-}
+
 
 
 function renderBoard(board) {
@@ -46,13 +43,12 @@ function minesNegsCount(board, rowIdx, colIdx) {
             if (currCell.isMine) minesCount++
         }
     }
-    return minesCount
+    return minesCount 
 }
 
-function getRandomInt(min, max) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min + 1) + min);
+function getElCell(i, j) {
+    const elCell = document.getElementById(`cell-${i}-${j}`)
+    return elCell
 }
 
 function setLevel(x) {
@@ -61,25 +57,50 @@ function setLevel(x) {
     if (x === 2) gLevel.SIZE = 12, gLevel.MINES = 32
     init()
 }
+function changeEmoji(emoji){
+    const elEmoji = document.querySelector(".emoji")
+    elEmoji.innerText = emoji
+    setTimeout(changeEmoji,3000,'😀')
+}
+
+function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1) + min);
+}
+
+
 
 function startTimer() {
-    var timer = document.querySelector('.timer')
-    var start = Date.now()
+    const timer = document.querySelector('.timer')
+    const start = Date.now()
     gGame.interval = setInterval(function () {
       var currTs = Date.now()
       var secs = parseInt((currTs - start) / 1000)
       secs = '00' + secs
       secs = secs.substring(secs.length - 3, secs.length)
+      gGame.score = +secs
       timer.innerText = `${secs}`
     }, 100)
-  }
-
-  function isAllMinesMarked(){
-    var counter
-    for(var i = 0; i < gMines.length; i++){
-        var iIdx = gMines[i].i
-        var jIdx = gMines[i].j
-        if(gBoard[iIdx][jIdx].isMarked) counter++
-    }
-    return counter === gMines.length
+  
 }
+
+
+function saveScore(){
+    var highestScore = localStorage.getItem('score')
+    if(!highestScore ||  gGame.score > highestScore){
+         localStorage.setItem("score", gGame.score);
+    }
+}
+
+function showModal(){
+    const elModal = document.querySelector(".modal")
+    elModal.innerText = (gGame.isWin) ? 'You Won !' : 'You Lost'
+}
+
+function getBestScore(){
+    const bestScore = localStorage.getItem('score')
+    const elBestScore = document.querySelector('.best-score')
+    elBestScore.innerText = `Best time: ${bestScore} seconeds`
+}
+
