@@ -27,6 +27,7 @@ var gBoard
 
 
 function init() {
+    hideModal()
     showLivesLeft()
     clearInterval(gGame.interval)
     gGame.isOn = false

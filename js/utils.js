@@ -95,7 +95,13 @@ function saveScore(){
 
 function showModal(){
     const elModal = document.querySelector(".modal")
+    elModal.classList.remove('hide')
     elModal.innerText = (gGame.isWin) ? 'You Won !' : 'You Lost'
+}
+
+function hideModal(){
+    const elModal = document.querySelector(".modal")
+    elModal.classList.add('hide')
 }
 
 function getBestScore(){
