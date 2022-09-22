@@ -88,7 +88,7 @@ function startTimer() {
 
 function saveScore(){
     var highestScore = localStorage.getItem('score')
-    if(!highestScore ||  gGame.score > highestScore){
+    if(!highestScore ||  gGame.score < highestScore){
          localStorage.setItem("score", gGame.score);
     }
 }

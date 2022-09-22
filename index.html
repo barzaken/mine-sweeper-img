@@ -11,15 +11,14 @@
 </head>
 
 <body onload="init()">
-    <button onclick="darkMode()" class="mode-btn">🌙</button>
     <div class="header">
+        <button onclick="darkMode()" class="mode-btn">🌙</button>
         <h1>Mine Sweeper</h1>
         <button onclick="setLevel(0)">Easy</button>
         <button onclick="setLevel(1)"">Medium</button>
         <button onclick="setLevel(2)">Hard</button>
     </div>
     <div class="game-control">
-        <button class="emoji" onclick="init()">😀</button>
         <div class="controls">
             <button onclick="safeClick()">Safe Click <br> <span></span></button>
             <button onclick="sevenBoom()">7 BOOM</button>
@@ -32,6 +31,7 @@
         </div>
         <div class="best-score">000</div>
         <div class="timer">000</div>
+        <button class="emoji" onclick="init()">😀</button>
         <div class="modal"></div>
     </div>
     <table class="table">

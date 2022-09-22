@@ -82,8 +82,8 @@ function cellClicked(elCell, i, j) {
     if(gGame.isHint){
         gGame.isHint = false
         cellClicked(elCell,i,j)
-        console.log('show negs')
         revealCells(elCell,i,j)
+        return
     }
 
     //model
@@ -91,7 +91,7 @@ function cellClicked(elCell, i, j) {
     gGame.shownCount++
     //DOM
     elCell.classList.add('shown')
-    elCell.innerHTML = (gBoard[i][j].isMine) ? "💣" : gBoard[i][j].minesAroundCount || ' '
+    elCell.innerText = (gBoard[i][j].isMine) ? "💣" : gBoard[i][j].minesAroundCount || ' '
     checkGameOver()
     if (gBoard[i][j].isMine) {
         gGame.livesCount--
@@ -223,11 +223,12 @@ function revealCells(elCell, rowIdx, colIdx,isShown) {
             if (j < 0 || j >= gBoard[i].length) continue
             if (i === rowIdx && j === colIdx) continue
             var elNextCell = getElCell(i, j)
-            var str = (isShown) ? '' : gBoard[i][j].minesAroundCount
+            var str = (isShown) ? '' : gBoard[i][j].minesAroundCount 
+            if(gBoard[i][j].isMine && !isShown) str = '💣'
             elNextCell.innerText = str
         }
     }
-    setTimeout(revealCells,1000,elCell,rowIdx,colIdx,true)
+setTimeout(revealCells,500,elCell,rowIdx,colIdx,true)
 }
 
 
