@@ -100,7 +100,7 @@ h1{
     font-size: 1.5em;
     height: 32px;
     width: 32px;
-    border: 0.5px solid rgb(171, 172, 173);
+    border: 1px inset black;
     cursor: pointer;
 }
 
