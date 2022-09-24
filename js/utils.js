@@ -1,9 +1,5 @@
 'use strict'
 
-console.log("connected")
-
-
-
 
 function renderBoard(board) {
     var strHtml = ''
@@ -11,11 +7,10 @@ function renderBoard(board) {
         strHtml += '<tr>\n'
         for (var j = 0; j < board[i].length; j++) {
             var cell = board[i][j]
-            // var className = (i + j) % 2 ? 'black' : 'white'
             var className = 'cell'
             var innerTxt = (cell.isMine) ? "💣" : cell.minesAroundCount
             var tdId = `cell-${i}-${j}`
-            strHtml += `\t<td id="${tdId}" oncontextmenu="cellMarked(this,${i},${j})" onclick="cellClicked(this,${i},${j})" class="${className}"></td>\n`
+            strHtml += `\t<td id="${tdId}" oncontextmenu="cellMarked(this,${i},${j})" onclick="cellClicked(this,${i},${j})" class="${className}">${innerTxt}</td>\n`
         }
         strHtml += '</tr>\n'
     }
@@ -69,8 +64,6 @@ function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
-
-
 function startTimer() {
     const timer = document.querySelector('.timer')
     const start = Date.now()
@@ -84,7 +77,6 @@ function startTimer() {
     }, 100)
   
 }
-
 
 function saveScore(){
     var highestScore = localStorage.getItem('score')
@@ -110,3 +102,10 @@ function getBestScore(){
     elBestScore.innerText = `Best time: ${bestScore} seconeds`
 }
 
+function darkMode(){
+    gGame.isDark = !gGame.isDark
+    const elBody = document.body;
+    const elBtn = document.querySelector('.mode-btn')
+    elBtn.innerText = (gGame.isDark) ? '☀️' : '🌙' 
+    elBody.classList.toggle("dark-mode");
+}

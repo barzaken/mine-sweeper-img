@@ -20,11 +20,13 @@ var gGame = {
     isHint: false,
     safeClickCount:3,
     isDark:false,
-    score:0
+    score:0,
+    mineExterCount: 1
 }
 
 var gBoard
 
+var gMinesIdx
 
 function init() {
     hideModal()
@@ -37,6 +39,7 @@ function init() {
     gGame.hintsCount = 3
     gGame.shownCount = 0
     gGame.markedCount = 0
+    gGame.mineExterCount = 1
     gGame.safeClickCount = 3
     gGame.score = 0
     gBoard = buildBoard()
@@ -50,6 +53,7 @@ function init() {
 function buildBoard() {
     var board = []
     var id = 0
+    gMinesIdx = []
     for (var i = 0; i < gLevel.SIZE; i++) {
         board[i] = []
         for (var j = 0; j < gLevel.SIZE; j++) {
@@ -66,11 +70,10 @@ function buildBoard() {
         var randIdxI = getRandomInt(0,gLevel.SIZE-1)
         var randIdxJ = getRandomInt(0,gLevel.SIZE-1)
         board[randIdxI][randIdxJ].isMine = true
+        gMinesIdx.push({i: randIdxI, j:randIdxJ})
     }
     return board
 }
-
-
 
 
 function cellClicked(elCell, i, j) {
@@ -83,7 +86,8 @@ function cellClicked(elCell, i, j) {
     if(gGame.isHint){
         gGame.isHint = false
         cellClicked(elCell,i,j)
-        revealCells(elCell,i,j)
+        revealCells(i,j)
+        setTimeout(revealCells,700,i,j)
         return
     }
 
@@ -92,7 +96,6 @@ function cellClicked(elCell, i, j) {
     gGame.shownCount++
     //DOM
     elCell.classList.add('shown')
-    elCell.innerText = (gBoard[i][j].isMine) ? "💣" : gBoard[i][j].minesAroundCount || ' '
     checkGameOver()
     if (gBoard[i][j].isMine) {
         gGame.livesCount--
@@ -101,7 +104,7 @@ function cellClicked(elCell, i, j) {
         return
     }
     if (gBoard[i][j].minesAroundCount === 0) {
-        expandShown(gBoard, elCell, i, j)
+        expandShown(gBoard, i, j)
     }
 }
 
@@ -113,13 +116,6 @@ function hintClicked(idx){
     elHints[idx].classList.add('used-hint')
 }
 
-function darkMode(){
-    gGame.isDark = !gGame.isDark
-    const elBody = document.body;
-    const elBtn = document.querySelector('.mode-btn')
-    elBtn.innerText = (gGame.isDark) ? '☀️' : '🌙' 
-    elBody.classList.toggle("dark-mode");
-}
 
 function sevenBoom(){
     init()
@@ -151,8 +147,6 @@ function safeClick(){
     elRandCell.classList.add('mark')
     setTimeout(() => elRandCell.classList.remove('mark'),1000)
 } 
-
-
 
 function checkGameOver() {
     if (gGame.livesCount === 0){
@@ -205,7 +199,7 @@ function cellMarked(elCell,i,j) {
 }
 
 
-function expandShown(board, elCell, rowIdx, colIdx) {
+function expandShown(board,rowIdx, colIdx) {
     for (var i = rowIdx - 1; i <= rowIdx + 1; i++) {
         if (i < 0 || i >= board.length) continue
         for (var j = colIdx - 1; j <= colIdx + 1; j++) {
@@ -217,21 +211,30 @@ function expandShown(board, elCell, rowIdx, colIdx) {
     }
 }
 
-function revealCells(elCell, rowIdx, colIdx,isShown) {
+function revealCells(rowIdx, colIdx) {
     for (var i = rowIdx - 1; i <= rowIdx + 1; i++) {
         if (i < 0 || i >= gBoard.length) continue
         for (var j = colIdx - 1; j <= colIdx + 1; j++) {
             if (j < 0 || j >= gBoard[i].length) continue
             if (i === rowIdx && j === colIdx) continue
-            var elNextCell = getElCell(i, j)
-            var str = (isShown) ? '' : gBoard[i][j].minesAroundCount 
-            if(gBoard[i][j].isMine && !isShown) str = '💣'
-            elNextCell.innerText = str
+                var elNextCell = getElCell(i, j)
+                elNextCell.classList.toggle('shown')
         }
     }
-setTimeout(revealCells,500,elCell,rowIdx,colIdx,true)
 }
 
+function mineExterminator(){
+    if(!gGame.mineExterCount) return
+    for(var i = 0; i < 3; i++){
+        var rand = getRandomInt(0,gMinesIdx.length)
+        var randMineI = gMinesIdx[rand].i
+        var randMineJ = gMinesIdx[rand].j
+        gBoard[randMineI][randMineJ].isMine = false
+    }
+    gGame.mineExterCount--
+    gBoard = setMinesNegsCount(gBoard)
+    renderBoard(gBoard)
+}
 
 
 

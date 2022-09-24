@@ -11,32 +11,39 @@
 </head>
 
 <body onload="init()">
+
     <div class="header">
         <button onclick="darkMode()" class="mode-btn">🌙</button>
         <h1>Mine Sweeper</h1>
         <button onclick="setLevel(0)">Easy</button>
         <button onclick="setLevel(1)"">Medium</button>
-        <button onclick="setLevel(2)">Hard</button>
+        <button onclick=" setLevel(2)">Hard</button>
     </div>
-    <div class="game-control">
-        <div class="controls">
-            <button onclick="safeClick()">Safe Click <br> <span></span></button>
-            <button onclick="sevenBoom()">7 BOOM</button>
-        </div>
-        <div class="lives"></div>
+
+
+    <div class="game-stats">
+        <div class="best-score">000</div>
+        <div class="timer">000</div>
         <div class="hints">
             <button onclick="hintClicked(0)">💡</button>
             <button onclick="hintClicked(1)"">💡</button>
             <button onclick="hintClicked(2)">💡</button>
         </div>
-        <div class="best-score">000</div>
-        <div class="timer">000</div>
         <button class="emoji" onclick="init()">😀</button>
+        <div class="lives"></div>
         <div class="modal"></div>
     </div>
+
     <table class="table">
         <tbody class="game-board"></tbody>
     </table>
+    <div class="game-control">
+        <div class="controls">
+            <button onclick="safeClick()">Safe Click <br> <span></span></button>
+            <button onclick="mineExterminator()">🤖</button>
+            <button onclick="sevenBoom()">7 BOOM</button>
+        </div>
+    </div>
 
     <script src="js/main.js"></script>
     <script src="js/utils.js"></script>

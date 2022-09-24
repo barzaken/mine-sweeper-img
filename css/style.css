@@ -12,6 +12,10 @@ body{
     background-image: url("bg-black.jpeg");
 }
 
+td:hover {
+    background-color: aquamarine;
+}
+
 table {
     table-layout: fixed;
     margin: auto;
@@ -59,7 +63,7 @@ h1{
 .best-score{
     border: none;
     font-size: 1rem;
-    max-width: 50%;
+    max-width: max-content;
     margin: auto;
     color: red;
 }
@@ -69,9 +73,14 @@ h1{
 }
 
 
-.game-control{
+.game-control , .game-stats{
     text-align: center;
+    margin: auto;
+    max-width: max-content;
 }
+
+
+
 
 .used-hint{
     opacity: 50%;
@@ -106,6 +115,7 @@ h1{
 
 .cell {
     background-color: rgb(108, 108, 108);
+    color:transparent
 }
 
 .hide{
@@ -132,5 +142,4 @@ h1{
     border-radius: 10%;
     height: 50px;
     width: 120px;
-    position: relative;
 }
