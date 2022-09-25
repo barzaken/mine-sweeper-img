@@ -1,11 +1,11 @@
 
 
 body{
-    background-image: url("/img/bg.jpg");
+    background-image: url("../img/bg.jpg");
 }
 
 .dark-mode{
-    background-image: url("/img/bg-black.jpeg");
+    background-image: url("../img/bg-black.jpeg");
     color: white;
 }
 .header{
