@@ -1,145 +1,140 @@
 
+
 body{
-    background-image: url("bg.jpg");
-    height: 100%;
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    
-}
-.dark-mode {
-    background-image: url("bg-black.jpeg");
+    background-image: url("/img/bg.jpg");
 }
 
-td:hover {
-    background-color: aquamarine;
+.dark-mode{
+    background-image: url("/img/bg-black.jpeg");
+    color: white;
 }
-
-table {
-    table-layout: fixed;
-    margin: auto;
-    border-collapse: collapse;
-}
-
-.mode-btn{
+.header{
     text-align: center;
+    margin: 7rem auto;
+    font-family: "Allerta Stencil"; 
+    font-size: 2rem;
+    color: rgb(255, 255, 255);
+}
+
+.levels button{
     background-color: transparent;
-    border:none;
+    border: none;
+    transition: 0.5s;
+    font-size: 1.5rem;
+    color: rgb(242, 242, 242);
+}
+
+.levels button:hover{
     font-size: 2rem;
 }
 
-.header{
-    text-align: center;
-    margin: 2rem;
-}
-
-
-h1{
-    color: white;
-    font-family: "Bowlby One";
-    font-size: 3rem;
-    font-style: normal;
-    font-variant: normal;
-    font-weight: 500;
-}
-
-.header button{
+.theme{
+    background-color: transparent;
     border: none;
-    transition: 1s;
-    background-color: Transparent;
-    font-family: "Bowlby One";
-    font-size: 1.5rem;
-    color: green;
-    width: 150px;
+    font-size: 2rem;
+}
+.game-container{
+    margin: auto;
+    text-align: center;
 }
 
+.game-info{
+    margin: auto;
+    width: max-content;
+}
+
+.game-buttons{
+    font-size: 1rem;
+}
+
+.timer{
+    border: 1px solid red;
+    background-color: black;
+    color: red;
+    margin: 1rem auto;
+    padding: 5px;
+    width:max-content;
+    font-size: 2rem;
+    text-align: center;
+}
+.best-score{
+    width: max-content;
+    margin: 20px auto;
+
+}
 .hints button{
     background-color: transparent;
     border: none;
-    font-size: 2rem;
-}
-
-.best-score{
-    border: none;
+    padding:0.1px;
     font-size: 1rem;
-    max-width: max-content;
-    margin: auto;
-    color: red;
 }
-
-.header button:hover{
-    font-size: 1.7rem;
-}
-
-
-.game-control , .game-stats{
-    text-align: center;
-    margin: auto;
-    max-width: max-content;
-}
-
-
-
-
 .used-hint{
     opacity: 50%;
 }
 
-.emoji{
-    background-color: rgba(245, 245, 245, 0.49);
+.modal{
+    margin: auto;
     font-size: 2rem;
-    border: 1px solid black;
-}
-
-.timer {
-    margin: 1rem auto;
-    border: 3px solid red;
-    font-size: 2rem;
-    background-color: black;
-    color: red;
-    padding: 4px 10px;
-    width: 140px;
-}
-
-
-
-.game-board td {
-    text-align: center;
-    font-size: 1.5em;
-    height: 32px;
-    width: 32px;
-    border: 1px inset black;
-    cursor: pointer;
-}
-
-.cell {
-    background-color: rgb(108, 108, 108);
-    color:transparent
+    width: max-content;
 }
 
 .hide{
     display: none;
 }
 
+.emoji{
+    font-size: 1.5rem;
+    background-color: rgb(228, 225, 225);
+}
+.table{
+    margin: auto;
+    border-style: solid;
+    background-color: white;
+}
+
+.table td{
+    text-align: center;
+    font-size: 1.5em;
+    height: 32px;
+    width: 32px;
+    cursor: pointer;
+}
+.game-buttons{
+    width: max-content;
+    margin: 20px auto;
+}
+
+.game-buttons button{
+    width: 120px;
+    height: 50px;
+    background-color: rgb(182, 182, 182);
+}
+
+.game-buttons button:hover{
+    background-color: rgb(243, 243, 243);
+}
+
+.cell{
+    color: transparent;
+    background-color: rgb(210, 205, 205);
+    border: 4px outset rgb(206, 206, 206);
+}
+
 .shown{
-    background-color: rgb(185, 185, 185);
+    background-color: rgb(228, 228, 228);
+    border: 4px inset rgb(255, 255, 255);
     color: green;
 }
 
 .mark{
-    background-color: rgb(176, 95, 71);
-}
-
-.modal{
-    color: white;
-}
-
-.controls button{
-    background-color: rgb(203, 245, 181);
+    background-color: rgb(198, 58, 58);
     border: none;
-    margin: 20px auto;
-    border-radius: 10%;
-    height: 50px;
-    width: 120px;
+}
+
+.safe{
+    background-color: rgb(216, 103, 103);
+}
+
+.unavailable{
+    color: gray;
 }

@@ -5,48 +5,53 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Bowlby+One" />
-    <title>Mine Sweeper - Bar Zaken</title>
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Allerta+Stencil" />
 </head>
 
 <body onload="init()">
-
     <div class="header">
-        <button onclick="darkMode()" class="mode-btn">🌙</button>
+        <button onclick="changeTheme()" class="theme">🌙</button>
         <h1>Mine Sweeper</h1>
-        <button onclick="setLevel(0)">Easy</button>
-        <button onclick="setLevel(1)"">Medium</button>
-        <button onclick=" setLevel(2)">Hard</button>
-    </div>
-
-
-    <div class="game-stats">
-        <div class="best-score">000</div>
-        <div class="timer">000</div>
-        <div class="hints">
-            <button onclick="hintClicked(0)">💡</button>
-            <button onclick="hintClicked(1)"">💡</button>
-            <button onclick="hintClicked(2)">💡</button>
-        </div>
-        <button class="emoji" onclick="init()">😀</button>
-        <div class="lives"></div>
-        <div class="modal"></div>
-    </div>
-
-    <table class="table">
-        <tbody class="game-board"></tbody>
-    </table>
-    <div class="game-control">
-        <div class="controls">
-            <button onclick="safeClick()">Safe Click <br> <span></span></button>
-            <button onclick="mineExterminator()">🤖</button>
-            <button onclick="sevenBoom()">7 BOOM</button>
+        <div class="levels">
+            <button onclick="setLevel(0)">Easy</button>
+            <button onclick="setLevel(1)"">Medium</button>
+            <button onclick=" setLevel(2)">Hard</button>
         </div>
     </div>
 
+    <div class="game-container">
+        <div class="game-info">
+            <div class="modal hide"></div>
+            <div class="timer">000</div>
+            <div class="best-score"></div>
+            <span class="hints">
+                    <button onclick="hintClicked(0)">💡</button>
+                    <button onclick="hintClicked(1)"">💡</button>
+                    <button onclick="hintClicked(2)">💡</button>
+            </span>
+            <button class="emoji" onclick="init()">😀</button>
+            <span class="lives"></span>
+        </div>
+        <div class="board">
+            <table class="table">
+                <tbody class="game-board"></tbody>
+            </table>
+        </div>
+    </div>
+    <div class="game-buttons">
+        <button onclick="safeClick()" class="safe-click"> Safe Click <br> 3 clicks left</button>
+        <button onclick="undo()">undo</button>
+        <button onclick="sevenBoom()">7 BOOM</button>
+        <button onclick="megaHint()" class="mega-hint">Mega Hint</button>
+        <button onclick="mineExterminator()" class="mine-ext"">Mine Exterminator</button>
+    </div>
+        
+    
     <script src="js/main.js"></script>
     <script src="js/utils.js"></script>
+
 </body>
 
 </html>
