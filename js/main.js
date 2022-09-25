@@ -100,16 +100,16 @@ function minesNegsCount(board, rowIdx, colIdx) {
 }
 
 function cellClicked(elCell, i, j) {
+    if(!gGame.isOn && !gGame.secsPassed){
+        gGame.isOn = true
+        startTimer()
+    } else if(!gGame.isOn) return
     if (gGame.isMega) {
         megaHintCords.push({ i, j })
         megaHint()
         return
     }
     if (gBoard[i][j].isShown || gBoard[i][j].isMarked) return
-    if (!gGame.isOn) {
-        gGame.isOn = true
-        startTimer()
-    }
     if (gGame.isHint) {
         gGame.isHint = false
         cellClicked(elCell, i, j)
