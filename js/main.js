@@ -203,6 +203,7 @@ function revealCells(rowIdx, colIdx) {
 
 //Best Score
 function saveScore() {
+    if(!gGame.isWin) return
     const bestScore = localStorage.getItem('score')
     if (!bestScore || gGame.score < bestScore) {
         localStorage.setItem("score", gGame.score);
